@@ -1,0 +1,74 @@
+titleinfo
+bankcodesinfo
+biodatainfo
+claimsnotification
+companyinfo
+consolidatedbankingreport
+contribschedule
+currency_mainteinance
+employee
+employeemaster 
+employermaster
+employerreceipts
+filecategoriesstore
+-files
+removed 
+foreingh keys 
+  CONSTRAINT `FK_Files_Employee` FOREIGN KEY (`Employee`) REFERENCES `employeemaster` (`member_id`),
+  CONSTRAINT `FK_Files_File` FOREIGN KEY (`File`) REFERENCES `filesystemstoreobject` (`Oid`),
+  CONSTRAINT `FK_Files_Type` FOREIGN KEY (`Type`) REFERENCES `slamsdocumenttypes` (`ID`) 
+
+
+
+CREATE TABLE IF NOT EXISTS `bankcodesinfo` (
+  `bank_code` varchar(100) NOT NULL DEFAULT '',
+  `description` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `is_bank_assurance` bit(1) DEFAULT NULL,
+  `created_by` varchar(100) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `altered_by` varchar(100) DEFAULT NULL,
+  `dola` datetime DEFAULT NULL,
+  `bank_sort_code` varchar(100) DEFAULT NULL,
+  `Title` varchar(100) DEFAULT NULL,
+  `ContactName` varchar(100) DEFAULT NULL,
+  `ContactEmail` varchar(100) DEFAULT NULL,
+  `ContactNumber` varchar(100) DEFAULT NULL,
+  `Title2` varchar(100) DEFAULT NULL,
+  `ContactName2` varchar(100) DEFAULT NULL,
+  `ContactEmail2` varchar(100) DEFAULT NULL,
+  `ContactNumber2` varchar(100) DEFAULT NULL,
+  `AccChar` int DEFAULT NULL,
+  `DirectDebit` bit(1) DEFAULT NULL,
+  `PostalAddress` varchar(100) DEFAULT NULL,
+  `PostalCode` varchar(100) DEFAULT NULL,
+  `Town` int DEFAULT NULL,
+  PRIMARY KEY (`bank_code`),
+  KEY `iTitle_bankcodesinfo` (`Title`),
+  KEY `iTitle2_bankcodesinfo` (`Title2`),
+  KEY `iTown_bankcodesinfo` (`Town`),
+  CONSTRAINT `FK_bankcodesinfo_Title` FOREIGN KEY (`Title`) REFERENCES `titleinfo` (`Code`),
+  CONSTRAINT `FK_bankcodesinfo_Title2` FOREIGN KEY (`Title2`) REFERENCES `titleinfo` (`Code`),
+  CONSTRAINT `FK_bankcodesinfo_Town` FOREIGN KEY (`Town`) REFERENCES `towns` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- Dumping data for table dbslamsfmpen.bankcodesinfo: ~14 rows (approximately)
+DELETE FROM `bankcodesinfo`;
+/*!40000 ALTER TABLE `bankcodesinfo` DISABLE KEYS */;
+INSERT INTO `bankcodesinfo` (`bank_code`, `description`, `address`, `is_bank_assurance`, `created_by`, `created_on`, `altered_by`, `dola`, `bank_sort_code`, `Title`, `ContactName`, `ContactEmail`, `ContactNumber`, `Title2`, `ContactName2`, `ContactEmail2`, `ContactNumber2`, `AccChar`, `DirectDebit`, `PostalAddress`, `PostalCode`, `Town`) VALUES
+	('AB13', 'ABSA', NULL, b'0', 'David.Akorly', '2022-05-04 14:11:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('AD02', 'ADB', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 12:18:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('BA05', 'BANK OF GHANA', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 14:09:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('CA12', 'CAL BANK', NULL, b'0', 'David.Akorly', '2022-04-12 12:34:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('CO11', 'CONSOLIDATAED BANK GHANA', NULL, b'0', 'David.Akorly', '2022-04-12 12:28:02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('EC03', 'ECOBANK GHANA', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 12:22:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('FI04', 'FIRST BANK GHANA', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 13:59:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('GH10', 'GHANA COMMERCIAL BANK', NULL, b'0', 'David.Akorly', '2022-04-12 12:22:56', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('GU07', 'GUARANTY TRUST BANK', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 14:18:17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('PR08', 'PRUDENTIAL BANK LTD', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 14:30:56', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('ST06', 'STANBIC BANK GHANA', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 14:13:25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('ST09', 'STANDARD CHARTERED BANK', NULL, b'0', 'David.Akorly', '2022-04-04 16:00:16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('UM01', 'UMB', NULL, b'0', 'NanaAdwoa.Boatemaa', '2019-08-27 11:57:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('ZE14', 'ZENITH BANK', NULL, b'0', 'David.Akorly', '2022-07-04 15:21:03', NULL, NULL, 'ZB', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+/*!40000 ALTER TABLE `bankcodesinfo` ENABLE KEYS */;

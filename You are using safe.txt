@@ -1,0 +1,31 @@
+Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
+Error Code: 3780. Referencing column 'Oid' and referenced column 'Oid' in foreign key constraint 'FK_Employee_Oid' are incompatible.
+
+
+
+Error Code: 3780. Referencing column 'Oid' and referenced column 'Oid' in foreign key constraint 'FK_Employee_Oid' are incompatible.
+
+'FK_Employee_Oid'
+
+CREATE TABLE IF NOT EXISTS `permissionpolicyuser` (   `Oid` char(38) NOT NULL DEFAULT '',   `StoredPassword` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,   `ChangePasswordOnFirstLogon` bit(1) DEFAULT NULL,   `UserName` varchar(100) DEFAULT NULL,   `IsActive` bit(1) DEFAULT NULL,   `OptimisticLockField` int DEFAULT NULL,   `GCRecord` int DEFAULT NULL,   `ObjectType` int DEFAULT NULL,   PRIMARY KEY (`Oid`),   KEY `iGCRecord_PermissionPolicyUser` (`GCRecord`),   KEY `iObjectType_PermissionPolicyUser` (`ObjectType`),   CONSTRAINT `FK_PermissionPolicyUser_ObjectType` FOREIGN KEY (`ObjectType`) REFERENCES `xpobjecttype` (`OID`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+
+
+-- Dumping structure for table dbslamsfmpen.permissionpolicyuser
+CREATE TABLE IF NOT EXISTS `permissionpolicyuser` (
+	`Oid` CHAR(38) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`StoredPassword` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`ChangePasswordOnFirstLogon` BIT(1) NULL DEFAULT NULL,
+	`UserName` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`IsActive` BIT(1) NULL DEFAULT NULL,
+	`OptimisticLockField` INT(10) NULL DEFAULT NULL,
+	`GCRecord` INT(10) NULL DEFAULT NULL,
+	`ObjectType` INT(10) NULL DEFAULT NULL,
+	PRIMARY KEY (`Oid`) USING BTREE,
+	INDEX `iGCRecord_PermissionPolicyUser` (`GCRecord`) USING BTREE,
+	INDEX `iObjectType_PermissionPolicyUser` (`ObjectType`) USING BTREE,
+	CONSTRAINT `FK_PermissionPolicyUser_ObjectType` FOREIGN KEY (`ObjectType`) REFERENCES `xpobjecttype` (`OID`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
